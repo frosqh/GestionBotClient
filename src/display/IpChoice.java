@@ -1,5 +1,6 @@
 package display;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,6 +18,7 @@ public class IpChoice extends MainLabel{
 	private JLabel labe1 = new JLabel("IP : ");
 	private JPanel textPanel = new JPanel();
 	private JPanel bouton = new JPanel();
+	private JPanel coucou = new JPanel();
 	private JButton apply = new JButton("Connecter");
 	private JButton quit = new JButton("Quitter");
 	
@@ -42,9 +44,14 @@ public class IpChoice extends MainLabel{
 		});
 		
 		textPanel.add(labe1);
+		textPanel.setBackground(new Color(0,0,0,1));
+		labe1.setBackground(new Color(0,0,0,1));
 		textPanel.add(ipInput);
 		bouton.add(apply);
 		bouton.add(quit);
+		bouton.setBackground(new Color(0,0,0,1));
+		coucou.setBackground(new Color(0,0,0,1));
+		add(coucou);
 		add(textPanel);
 		add(bouton);
 		

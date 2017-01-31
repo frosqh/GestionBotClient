@@ -1,2 +1,5 @@
 .classpath
 *.project
+*.class
+bin/resources/musique.jpeg
+bin/resources/patate.jpeg
