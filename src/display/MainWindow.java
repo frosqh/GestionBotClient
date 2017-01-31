@@ -14,6 +14,8 @@ public class MainWindow extends JFrame{
 	
 	private State st;
 	private MainLabel ipChoice;
+	private MainLabel ArtistChoice;
+	private ImageIcon back;
 	
 	public MainWindow() throws IOException{
 		setSt(new IsIpNotChosen());
@@ -22,7 +24,7 @@ public class MainWindow extends JFrame{
 		setSize(900,600);
 		setTitle("Bot Paikea");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		ImageIcon back = new ImageIcon(ImageIO.read(getClass().getResource("/resources/patate.jpeg")));
+		back = new ImageIcon(ImageIO.read(getClass().getResource("/resources/patate.jpeg")));
 		ipChoice = new IpChoice(back);
 		this.setContentPane(ipChoice);
 		setIconImage(ImageIO.read(getClass().getResource("/resources/musique.jpeg")));
@@ -45,6 +47,18 @@ public class MainWindow extends JFrame{
 	
 	public void prev() {
 		st.prev();
+	}
+
+	public MainLabel getArtistChoice() {
+		return ArtistChoice;
+	}
+
+	public void setArtistChoice(MainLabel artistChoice) {
+		ArtistChoice = artistChoice;
+	}
+
+	public ImageIcon getBack() {
+		return back;
 	}
 
 }
