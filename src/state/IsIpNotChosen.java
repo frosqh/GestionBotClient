@@ -1,5 +1,7 @@
 package state;
 
+import java.io.IOException;
+
 import core.ClientThread;
 import core.GestionClient;
 import display.ArtistChoice;
@@ -16,7 +18,11 @@ public class IsIpNotChosen implements State {
 		GestionClient.setClientThread(new ClientThread(GestionClient.getIp()));
 		Thread t = new Thread(GestionClient.getClientThread());
 		t.start();
-		System.out.println("BITE");
+		try {
+			GestionClient.getMainWindow().setSystemTray();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		while(GestionClient.getMapSong()==null){
 			System.out.println(GestionClient.getMapSong());
 		}

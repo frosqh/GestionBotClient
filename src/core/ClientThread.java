@@ -15,6 +15,8 @@ public class ClientThread implements Runnable{
 	
 	final static int port = 2302;
 	private Socket socket;
+	private BufferedReader in = null;
+	private PrintStream out = null;
 	private InetAddress serveur;
 	
 	public ClientThread(String ip){
@@ -32,8 +34,8 @@ public class ClientThread implements Runnable{
 			System.out.println(serveur);
 			socket = new Socket(serveur, port);
 			
-		    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		    PrintStream out = new PrintStream(socket.getOutputStream());
+		    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		    out = new PrintStream(socket.getOutputStream());
 		      
 			out.println("coucou");
 		    String receivedData = "";
@@ -56,10 +58,33 @@ public class ClientThread implements Runnable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+	}
+
+	public void playPause() throws IOException {
+		String receivedData;
+		out.println("playPause");
+		while((receivedData = in.readLine())==null){
+			//Permet de récupérer le code d'erreur renvoyé (Si on en renvoie un)
+		}
+	}
+	
+	public void next() throws IOException{
+		String receivedData;
+		out.println("next");
+		while((receivedData = in.readLine())==null){
+			//Permet de récupérer le code d'erreur
+		}
+	}
+	
+	public void vlaLaChanson(String song) throws IOException{
+		String receivedData;
+		out.println("vlalachanson"+song);
+		while((receivedData = in.readLine())==null){
+			//Permet de récupérer le code d'erreur
+		}
 	}
 
 }

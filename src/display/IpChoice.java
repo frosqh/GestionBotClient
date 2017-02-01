@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import core.GestionClient;
 
+@SuppressWarnings("serial")
 public class IpChoice extends MainLabel{
 
 	private JTextField ipInput = new JTextField("frosqh.ddns.net");
@@ -19,6 +20,9 @@ public class IpChoice extends MainLabel{
 	private JPanel textPanel = new JPanel();
 	private JPanel bouton = new JPanel();
 	private JPanel coucou = new JPanel();
+	private JPanel coucou2 = new JPanel();
+	private JPanel coucou3 = new JPanel();
+	private JPanel coucou4 = new JPanel();
 	private JButton apply = new JButton("Connecter");
 	private JButton quit = new JButton("Quitter");
 	
@@ -51,9 +55,15 @@ public class IpChoice extends MainLabel{
 		bouton.add(quit);
 		bouton.setBackground(new Color(0,0,0,1));
 		coucou.setBackground(new Color(0,0,0,1));
+		coucou2.setBackground(new Color(0,0,0,1));
+		coucou3.setBackground(new Color(0,0,0,1));
+		coucou4.setBackground(new Color(0,0,0,1));
 		add(coucou);
 		add(textPanel);
+		add(coucou3);
 		add(bouton);
+		add(coucou2);
+		add(coucou4);
 		
 		
 	}
