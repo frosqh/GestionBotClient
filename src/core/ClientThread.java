@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.SortedMap;
@@ -33,6 +34,7 @@ public class ClientThread implements Runnable{
 		try {
 			System.out.println(serveur);
 			socket = new Socket(serveur, port);
+			socket.setSoTimeout(30000);
 			
 		    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		    out = new PrintStream(socket.getOutputStream());
@@ -55,6 +57,8 @@ public class ClientThread implements Runnable{
 		    	wait();
 		    }
 		    
+		} catch (SocketException e){
+			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
@@ -66,25 +70,32 @@ public class ClientThread implements Runnable{
 	public void playPause() throws IOException {
 		String receivedData;
 		out.println("playPause");
-		while((receivedData = in.readLine())==null){
-			//Permet de récupérer le code d'erreur renvoyé (Si on en renvoie un)
-		}
 	}
 	
 	public void next() throws IOException{
 		String receivedData;
 		out.println("next");
-		while((receivedData = in.readLine())==null){
-			//Permet de récupérer le code d'erreur
-		}
 	}
 	
 	public void vlaLaChanson(String song) throws IOException{
 		String receivedData;
 		out.println("vlalachanson"+song);
+		while((receivedData = in.readLine())==null);
+	}
+
+	public String[] getPlaying() throws IOException {
+		String[] playing = new String[2];
+		String receivedData;
+		out.println("givemeinfo");
 		while((receivedData = in.readLine())==null){
-			//Permet de récupérer le code d'erreur
+			
 		}
+		playing[0] = receivedData;
+		while((receivedData = in.readLine())==null){
+			
+		}
+		playing[1] = receivedData;
+		return playing;
 	}
 
 }

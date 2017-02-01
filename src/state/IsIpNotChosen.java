@@ -5,6 +5,7 @@ import java.io.IOException;
 import core.ClientThread;
 import core.GestionClient;
 import display.ArtistChoice;
+import help.UpdateThread;
 
 public class IsIpNotChosen implements State {
 
@@ -29,7 +30,10 @@ public class IsIpNotChosen implements State {
 		GestionClient.getMainWindow().setArtistChoice(new ArtistChoice(GestionClient.getMainWindow().getBack(),GestionClient.getMapSong()));
 		GestionClient.getMainWindow().setContentPane(GestionClient.getMainWindow().getArtistChoice());
 		GestionClient.getMainWindow().setSt(new IsArtistNotChosen());
-		
+		GestionClient.getMainWindow().setNotExitable();
+		Thread t2 = new Thread(new UpdateThread());
+		GestionClient.setT(t2);
+		t2.start();
 	}
 
 }

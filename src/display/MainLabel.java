@@ -12,5 +12,9 @@ public class MainLabel extends JLabel {
 		setVisible(true);
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 	}
+
+	public void updateInfo(String string, String string2) {
+		
+	}
 	
 }

@@ -30,14 +30,6 @@ public class MainWindow extends JFrame{
 	private MainLabel ipChoice;
 	private MainLabel ArtistChoice;
 	private MainLabel songChoice;
-	public MainLabel getIpChoice() {
-		return ipChoice;
-	}
-
-	public void setIpChoice(MainLabel ipChoice) {
-		this.ipChoice = ipChoice;
-	}
-
 	private ImageIcon back;
 	private PopupMenu popup;
 	private MenuItem aboutItem;
@@ -49,12 +41,7 @@ public class MainWindow extends JFrame{
 		setResizable(true);
 		setSize(900,600);
 		setTitle("Bot Paikea");
-		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		addWindowListener(new WindowAdapter(){
-			public void windowClosing(WindowEvent e){
-				setVisible(false);
-			}
-		});
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		back = new ImageIcon(ImageIO.read(getClass().getResource("/resources/patate.jpeg")));
 		ipChoice = new IpChoice(back);
 		this.setContentPane(ipChoice);
@@ -148,6 +135,15 @@ public class MainWindow extends JFrame{
 		}
 		
 	}
+	
+	public void setNotExitable(){
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e){
+				setVisible(false);
+			}
+		});
+	}
 
 	public State getSt() {
 		return st;
@@ -189,4 +185,31 @@ public class MainWindow extends JFrame{
 		songChoice = songChoice2;		
 	}
 
+	public MainLabel getIpChoice() {
+		return ipChoice;
+	}
+
+	public void setIpChoice(MainLabel ipChoice) {
+		this.ipChoice = ipChoice;
+	}
+
+	public SystemTray getTray() {
+		return tray;
+	}
+
+	public MainLabel getSongChoice() {
+		return songChoice;
+	}
+
+	public void setSongChoice(MainLabel songChoice) {
+		this.songChoice = songChoice;
+	}
+	
+	public void displayMessage(String msg){
+		tray.getTrayIcons()[0].displayMessage("Musique jouée", msg, TrayIcon.MessageType.INFO);
+}
+
+	public MenuItem getAboutItem() {
+		return aboutItem;
+	}
 }

@@ -9,6 +9,7 @@ import display.MainWindow;
 public class GestionClient {
 	//TODO Faire le TrayIcon ainsi que la minimisation à la fermeture
 	//TODO Achever le choix de chanson, rendre le tout cohérent
+	private static Thread t;
 	private static String ip;
 	private static MainWindow mainWindow;
 	private static SortedMap<String,ArrayList<String>> mapSong;
@@ -48,6 +49,14 @@ public class GestionClient {
 
 	public static void setClientThread(ClientThread clientThread) {
 		GestionClient.clientThread = clientThread;
+	}
+
+	public static Thread getT() {
+		return t;
+	}
+
+	public static void setT(Thread t) {
+		GestionClient.t = t;
 	}
 
 }
