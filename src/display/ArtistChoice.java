@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.SortedMap;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -29,10 +30,11 @@ public class ArtistChoice extends MainLabel {
 	private JPanel coucou3 = new JPanel();
 	private JPanel coucou4 = new JPanel();
 	private JLabel choixArtiste = new JLabel("Choix d'artiste : ");
+	
 	public ArtistChoice(ImageIcon back, SortedMap<String,ArrayList<String>> mapSong) {
 		super(back);
 		choix.setLayout(new FlowLayout());
-		updatePanel.setLayout(new FlowLayout());
+		updatePanel.setLayout(new BoxLayout(updatePanel, BoxLayout.PAGE_AXIS));
 		bouton.setLayout(new FlowLayout());
 		choix.setBackground(new Color(0,0,0,1));
 		bouton.setBackground(new Color(0,0,0,1));

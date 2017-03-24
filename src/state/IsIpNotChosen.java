@@ -8,6 +8,7 @@ import display.ArtistChoice;
 import help.UpdateThread;
 
 public class IsIpNotChosen implements State {
+	private int bite;
 
 	@Override
 	public void prev() {
@@ -25,7 +26,7 @@ public class IsIpNotChosen implements State {
 			e.printStackTrace();
 		}
 		while(GestionClient.getMapSong()==null){
-			System.out.println(GestionClient.getMapSong());
+			System.out.print("");
 		}
 		GestionClient.getMainWindow().setArtistChoice(new ArtistChoice(GestionClient.getMainWindow().getBack(),GestionClient.getMapSong()));
 		GestionClient.getMainWindow().setContentPane(GestionClient.getMainWindow().getArtistChoice());

@@ -17,6 +17,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import core.GestionClient;
 import state.IsIpNotChosen;
@@ -207,9 +208,14 @@ public class MainWindow extends JFrame{
 	
 	public void displayMessage(String msg){
 		tray.getTrayIcons()[0].displayMessage("Musique jouée", msg, TrayIcon.MessageType.INFO);
-}
+	}
 
+	public void displayMessage2(String msg){
+		tray.getTrayIcons()[0].displayMessage("Erreur", msg, TrayIcon.MessageType.ERROR);
+	}
+	
 	public MenuItem getAboutItem() {
 		return aboutItem;
 	}
+	
 }

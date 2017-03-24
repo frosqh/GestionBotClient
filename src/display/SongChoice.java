@@ -1,12 +1,14 @@
 package display;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.SortedMap;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -31,6 +33,9 @@ public class SongChoice extends MainLabel {
 	public SongChoice(ImageIcon back, String artist, SortedMap<String,ArrayList<String>> mapSong ) {
 		super(back);
 		
+		updatePanel.setLayout(new BoxLayout(updatePanel, BoxLayout.PAGE_AXIS));
+		choix.setLayout(new FlowLayout());
+		bouton.setLayout(new FlowLayout());
 		choix.setBackground(new Color(0,0,0,1));
 		bouton.setBackground(new Color(0,0,0,1));
 		updatePanel.setBackground(new Color(0,0,0,1));

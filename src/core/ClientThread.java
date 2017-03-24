@@ -1,5 +1,6 @@
 package core;
 
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import help.ListHashMap;
 import java.io.IOException;
@@ -11,6 +12,10 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.SortedMap;
+
+import javax.swing.JOptionPane;
+
+import display.MainWindow;
 
 public class ClientThread implements Runnable{
 	
@@ -34,7 +39,7 @@ public class ClientThread implements Runnable{
 		try {
 			System.out.println(serveur);
 			socket = new Socket(serveur, port);
-			socket.setSoTimeout(30000);
+			socket.setSoTimeout(0);
 			
 		    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		    out = new PrintStream(socket.getOutputStream());
@@ -59,6 +64,17 @@ public class ClientThread implements Runnable{
 		    
 		} catch (SocketException e){
 			e.printStackTrace();
+			GestionClient.getMainWindow().displayMessage2("Serveur déconnecté");
+			final Runnable runnable = (Runnable) Toolkit.getDefaultToolkit().getDesktopProperty("win.sound.default");
+			if (runnable != null) runnable.run();
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			System.exit(0);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
